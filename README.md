@@ -20,7 +20,7 @@ GOOGLE_APPLICATION_CREDENTIALS=**********
 **start**
 ```
 docker run -it \
-    -v $(pwd)/credentials.json:/app/credentials.json
-    -v $(pwd)/.env:/app/.env
-    oliverlorenz/start-stop-server-by-discord-voicechannel-presence
+    -v $(pwd)/credentials.json:/app/credentials.json \
+    -v $(pwd)/.env:/app/.env \
+    oliverlorenz/start-stop-server-by-discord-voicechannel-presence \
 ```
