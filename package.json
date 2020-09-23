@@ -1,5 +1,5 @@
 {
-  "name": "start-stop-server-by-discord-voicechannel-presence",
+  "name": "@oliverlorenz/start-stop-server-by-discord-voicechannel-presence",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,8 +14,9 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@semantic-release/github": "7.1.1",
     "semantic-release": "17.1.2",
-    "husky": "^4.3.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "husky": "^4.3.0"
+    
   },
   "dependencies": {
     "@google-cloud/cloudbuild": "^1.5.0",
