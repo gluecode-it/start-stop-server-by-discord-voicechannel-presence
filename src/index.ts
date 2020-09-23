@@ -1,7 +1,7 @@
 require('dotenv').config();
 import * as Discord from 'discord.js';
 import { VoiceChannelObserver } from 'discord-voice-channel-observer';
-import { ServerHandler } from './ServerHandler';
+import { ServerHandler } from '../ServerHandler';
 // @ts-ignore
 import * as DiscordWebhook from 'discord-webhook-node';
 

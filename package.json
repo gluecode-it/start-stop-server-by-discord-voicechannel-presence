@@ -10,7 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.8.3"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@semantic-release/github": "7.1.1",
+    "husky": "^4.3.0",
+    "typescript": "^3.8.3",
+    "semantic-release": "17.1.2"
   },
   "dependencies": {
     "@google-cloud/cloudbuild": "^1.5.0",
@@ -22,5 +27,10 @@
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "javascript-state-machine": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
