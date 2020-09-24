@@ -4,23 +4,33 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc --noEmit",
-    "postinstall": "npx tsc"
+    "test": "jest --coverage",
+    "dev:test": "jest --coverage --coverage-reporters html --watch-all"
+  },
+  "bin": {
+    "start-stop-discord": "dist/cli.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.8.3"
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-typescript": "7.10.4",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@semantic-release/github": "7.1.1",
+    "@types/jest": "26.0.14",
+    "@types/node": "13.13.21",
+    "babel-jest": "26.3.0",
+    "husky": "4.3.0",
+    "jest": "26.4.2",
+    "semantic-release": "17.1.2",
+    "typescript": "4.0.3"
   },
   "dependencies": {
-    "@google-cloud/cloudbuild": "^1.5.0",
-    "@google-cloud/compute": "^1.2.0",
-    "@types/javascript-state-machine": "^2.4.1",
-    "@types/node": "^13.13.4",
-    "discord-voice-channel-observer": "^1.0.2",
-    "discord-webhook-node": "^1.0.7",
-    "discord.js": "^12.2.0",
+    "discord-webhook-node": "^1.1.8",
+    "discord-voice-channel-observer": "^2.2.1",
     "dotenv": "^8.2.0",
-    "javascript-state-machine": "^3.1.0"
+    "moment": "^2.29.0"
   }
 }
