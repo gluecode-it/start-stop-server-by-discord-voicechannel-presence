@@ -6,6 +6,7 @@ declare global {
       USER_THRESHOLD: string;
       DISCORD_CHANNEL_ID: string;
       DISCORD_TOKEN: string;
+      DISCORD_WEBHOOK_URL: string;
     }
   }
 }
