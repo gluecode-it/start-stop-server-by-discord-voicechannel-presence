@@ -25,9 +25,12 @@
     "typescript": "4.0.3"
   },
   "dependencies": {
-    "@gluecode-it/discord-voice-channel-observer": "^2.0.4",
-    "@gluecode-it/google-cloud-vm-handler": "^1.1.5",
+    "@gluecode-it/delayed-transition-handler": "^1.0.3",
+    "@gluecode-it/discord-voice-channel-observer": "^2.0.10",
+    "@gluecode-it/google-cloud-vm-handler": "^1.1.6",
+    "@google-cloud/compute": "^2.1.0",
     "discord-webhook-node": "^1.1.8",
+    "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "moment": "^2.29.0"
   },

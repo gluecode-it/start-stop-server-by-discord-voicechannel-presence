@@ -8,7 +8,7 @@ export class DiscordMessagingHandler {
     const formattedTime = moment()
       .add(startupDelayMs, "milliseconds")
       .fromNow();
-    this.hook.info(`Server start will triggered ${formattedTime}`);
+    this.hook.info(`Server start will be triggered ${formattedTime}`);
   }
 
   async sendStartingMessage() {

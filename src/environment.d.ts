@@ -7,6 +7,8 @@ declare global {
       DISCORD_CHANNEL_ID: string;
       DISCORD_TOKEN: string;
       DISCORD_WEBHOOK_URL: string;
+      GC_ZONE: string;
+      GC_INSTANCE_NAME: string;
     }
   }
 }
