@@ -6,6 +6,7 @@ import { VoiceChannelObserver, Event } from "@gluecode-it/discord-voice-channel-
 import { DelayedTransitionHandler } from "@gluecode-it/delayed-transition-handler";
 import { VmHandler, GoogleVM } from "@gluecode-it/google-cloud-vm-handler"
 import { Client } from 'discord.js'
+import { State } from "@gluecode-it/delayed-transition-handler/dist/src/state";
 
 const Compute = require('@google-cloud/compute');
 
@@ -23,7 +24,7 @@ export class StartStopServerByDiscordVoiceChannel {
   ) {
     this.messageHandler = new DiscordMessagingHandler(
       new Webhook({
-        url: webhookUrl,
+        url: this.webhookUrl,
       })
     );
   }
@@ -41,37 +42,46 @@ export class StartStopServerByDiscordVoiceChannel {
       []
     );
 
-    observer.onThresholdReached(this.threshold, async () => {
-      const vmHandler = new VmHandler(vm);
-      const startToStopTransitionHandler = new DelayedTransitionHandler(
-        this.delayStartupMs
-      );
-      await this.messageHandler.sendStartScheduledMessage(this.delayStartupMs)
-
-      startToStopTransitionHandler.onTransitionStarted(async () => {
-        await vmHandler.start();
-        await this.messageHandler.sendStartingMessage();
-        vmHandler.onStarted((ip) => {
-          this.messageHandler.sendRunningMessage(ip)
-        })
-      })
-    
-      startToStopTransitionHandler.scheduleTransition();
+    const vmHandler = new VmHandler(vm);
+    vmHandler.onStarted((ip) => {
+      this.messageHandler.sendRunningMessage(ip)
     })
 
-    observer.onThresholdLeft(this.threshold, () => {
-      const vmHandler = new VmHandler(vm);
-      const stopToStartTransitionHandler = new DelayedTransitionHandler(
-        10000,
-      );
-      this.messageHandler.sendStopScheduledMessage(this.delayShutdownMs)
-
-      stopToStartTransitionHandler.onTransitionStarted(async () => {
-        await vmHandler.stop();
-        this.messageHandler.sendStopMessage();
+    observer.onThresholdReached(this.threshold, async () => {
+      const startToStopTransitionHandler = new DelayedTransitionHandler(
+        this.delayStartupMs
+      )
+      startToStopTransitionHandler.onTransitionScheduled(async () => {
+        await this.messageHandler.sendStartScheduledMessage(this.delayStartupMs)
       })
 
-      stopToStartTransitionHandler.scheduleTransition();
+      startToStopTransitionHandler.onTransitionStarted(async() => {
+        await this.messageHandler.sendStartingMessage()
+        //await vmHandler.start();
+      })
+
+      if(startToStopTransitionHandler.is(State.STATUS_A)) {
+        startToStopTransitionHandler.scheduleTransition();
+      }
+    })
+
+    observer.onThresholdLeft(this.threshold, async () => {
+      const stopToStartTransitionHandler = new DelayedTransitionHandler(
+        this.delayShutdownMs,
+      );
+
+      stopToStartTransitionHandler.onTransitionScheduled(async () => {
+        await this.messageHandler.sendStopScheduledMessage(this.delayShutdownMs)
+      })
+
+      stopToStartTransitionHandler.onTransitionStarted(async() => {
+        await this.messageHandler.sendStopMessage()
+        //await vmHandler.stop();
+      })
+      
+      if(stopToStartTransitionHandler.is(State.STATUS_A)) {
+        stopToStartTransitionHandler.scheduleTransition();
+      }
     })
   }
 }

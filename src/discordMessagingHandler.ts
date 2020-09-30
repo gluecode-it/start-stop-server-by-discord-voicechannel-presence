@@ -21,6 +21,12 @@ export class DiscordMessagingHandler {
     );
   }
 
+  async sendStopAbort() {
+    this.hook.info(
+      "Server stop abort because enough people are in the channel again"
+    );
+  }
+
   async sendStopScheduledMessage(shutdownDelay: number) {
     const formattedTime = moment().add(shutdownDelay, "milliseconds").fromNow();
     this.hook.info(`Stopping server ${formattedTime}`);
