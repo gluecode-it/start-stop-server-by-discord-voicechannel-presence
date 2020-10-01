@@ -3,7 +3,7 @@ declare global {
     interface ProcessEnv {
       DELAY_SECONDS_STARTUP: string;
       DELAY_SECONDS_SHUTDOWN: string;
-      USER_THRESHOLD: string;
+      USER_THRESHOLD_START: string;
       DISCORD_CHANNEL_ID: string;
       DISCORD_TOKEN: string;
       DISCORD_WEBHOOK_URL: string;
