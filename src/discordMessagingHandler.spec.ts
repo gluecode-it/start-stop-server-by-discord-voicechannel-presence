@@ -22,7 +22,7 @@ describe(DiscordMessagingHandler.name, () => {
     it("should generate a info message (in a few seconds)", async () => {
       await handler.sendStartScheduledMessage(20000);
       expect(fakeHook.info).toHaveBeenCalledWith(
-        "Server start will triggered in a few seconds"
+        "Server start will be triggered in a few seconds"
       );
       expect(fakeHook.info).toBeCalledTimes(1);
     });
@@ -30,7 +30,7 @@ describe(DiscordMessagingHandler.name, () => {
     it("should generate a info message (in 2 minutes)", async () => {
       await handler.sendStartScheduledMessage(120000);
       expect(fakeHook.info).toHaveBeenCalledWith(
-        "Server start will triggered in 2 minutes"
+        "Server start will be triggered in 2 minutes"
       );
       expect(fakeHook.info).toBeCalledTimes(1);
     });
@@ -49,6 +49,16 @@ describe(DiscordMessagingHandler.name, () => {
       await handler.sendStartAbort();
       expect(fakeHook.info).toHaveBeenCalledWith(
         "Server start abort because to few people are in the channel"
+      );
+      expect(fakeHook.info).toBeCalledTimes(1);
+    });
+  });
+
+  describe("sendStopAbort()", () => {
+    it("should generate a info message", async () => {
+      await handler.sendStopAbort();
+      expect(fakeHook.info).toHaveBeenCalledWith(
+        "Server stop abort because enough people are in the channel again"
       );
       expect(fakeHook.info).toBeCalledTimes(1);
     });
