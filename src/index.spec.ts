@@ -18,6 +18,7 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
     observer = {
       onThresholdReached: jest.fn(),
       onThresholdLeft: jest.fn(),
+      start: jest.fn(),
     };
     vmHandler = {
       onStarted: jest.fn(),
