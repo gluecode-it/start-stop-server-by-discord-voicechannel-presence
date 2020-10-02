@@ -11,6 +11,7 @@
     "emitDecoratorMetadata": true,
     "noUnusedLocals": true,
     "pretty": true,
+    "types": ["jest", "node"],
     "lib": ["esnext"]
   }
 }
