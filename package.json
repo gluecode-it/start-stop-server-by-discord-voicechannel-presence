@@ -10,6 +10,9 @@
   },
   "author": "",
   "license": "ISC",
+  "bin": {
+    "start-stop-discord": "dist/cli.js"
+  },
   "devDependencies": {
     "@babel/preset-env": "7.11.5",
     "@babel/preset-typescript": "7.10.4",
@@ -24,7 +27,7 @@
   },
   "dependencies": {
     "@gluecode-it/delayed-transition-handler": "3.1.0",
-    "@gluecode-it/discord-voice-channel-observer": "^2.1.0",
+    "@gluecode-it/discord-voice-channel-observer": "^3.0.0",
     "@gluecode-it/google-cloud-vm-handler": "^1.1.6",
     "@google-cloud/compute": "^2.2.0",
     "discord-webhook-node": "^1.1.8",

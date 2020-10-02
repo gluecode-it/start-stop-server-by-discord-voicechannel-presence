@@ -158,5 +158,6 @@ export class DiscordVoiceChannelServerHandler {
       this.startThreshold,
       this.thresholdLeftHandler.bind(this)
     );
+    await this.observer.start();
   }
 }
