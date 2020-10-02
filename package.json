@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev:start": "tsc; node dist/cli.js",
+    "prepare": "tsc",
     "test": "jest --coverage",
     "dev:test": "jest --coverage --coverage-reporters html --watch-all"
   },
