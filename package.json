@@ -2,7 +2,7 @@
   "name": "@gluecode-it/discord-voice-channel-server-handler",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev:start": "tsc; node dist/cli.js",
     "test": "jest --coverage",
