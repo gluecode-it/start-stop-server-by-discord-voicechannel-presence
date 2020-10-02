@@ -16,7 +16,7 @@ enum Event {
   STOP_FINISHED = "STOP_FINISHED",
 }
 
-export class StartStopServerByDiscordVoiceChannel {
+export class DiscordVoiceChannelServerHandler {
   private startToStopTransitionHandler: DelayedTransitionHandler;
   private stopToStartTransitionHandler: DelayedTransitionHandler;
   private emitter: EventEmitter;

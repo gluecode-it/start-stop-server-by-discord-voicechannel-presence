@@ -1,11 +1,11 @@
-import { StartStopServerByDiscordVoiceChannel } from ".";
+import { DiscordVoiceChannelServerHandler } from ".";
 import { VoiceChannelObserver } from "@gluecode-it/discord-voice-channel-observer";
 import { VmHandler } from "@gluecode-it/google-cloud-vm-handler";
 import { DiscordMessagingHandler } from "./discordMessagingHandler";
 import { EventEmitter } from "events";
 
 describe("StartStopServerByDiscordVoiceChannel", () => {
-  let handler: StartStopServerByDiscordVoiceChannel;
+  let handler: DiscordVoiceChannelServerHandler;
 
   let observer: SpyObj<VoiceChannelObserver>;
   let vmHandler: SpyObj<VmHandler>;
@@ -32,7 +32,7 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
       sendRunningMessage: jest.fn(),
     };
 
-    handler = new StartStopServerByDiscordVoiceChannel(
+    handler = new DiscordVoiceChannelServerHandler(
       (observer as unknown) as VoiceChannelObserver,
       (vmHandler as unknown) as VmHandler,
       (messagingHandler as unknown) as DiscordMessagingHandler,

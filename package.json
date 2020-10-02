@@ -1,5 +1,5 @@
 {
-  "name": "@gluecode-it/start-stop-server-by-discord-voicechannel-presence",
+  "name": "@gluecode-it/discord-voice-channel-server-handler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,9 +7,6 @@
     "dev:start": "tsc; node dist/cli.js",
     "test": "jest --coverage",
     "dev:test": "jest --coverage --coverage-reporters html --watch-all"
-  },
-  "bin": {
-    "start-stop-discord": "dist/cli.js"
   },
   "author": "",
   "license": "ISC",
