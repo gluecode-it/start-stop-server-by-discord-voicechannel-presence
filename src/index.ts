@@ -147,7 +147,9 @@ export class DiscordVoiceChannelServerHandler {
 
     this.stopToStartTransitionHandler.onTransitionFinished(async () => {
       await this.messageHandler.sendStopMessage();
-      this.startToStopTransitionHandler.reset();
+      if (this.startToStopTransitionHandler.is(State.STATUS_B)) {
+        this.startToStopTransitionHandler.reset();
+      }
       this.emitter.emit(Event.STOP_FINISHED);
     });
 

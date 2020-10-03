@@ -219,6 +219,21 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
       handler.start();
     });
 
+    it("check startToStopTransitionHandler does not throw error", async (done) => {
+      const emitter = new EventEmitter();
+      observer.onThresholdReached?.mockImplementationOnce(() => {});
+      observer.onThresholdLeft?.mockImplementationOnce(
+        (threshold: number, callback: () => void) => {
+          emitter.on("triggerLeft", callback);
+        }
+      );
+      handler.onceStopFinished(() => {
+        done();
+      });
+      await handler.start();
+      emitter.emit("triggerLeft");
+    });
+
     it("should send if running", () => {
       vmHandler.onStarted?.mockImplementationOnce(
         (callback: (ip: string) => void) => {
