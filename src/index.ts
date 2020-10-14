@@ -129,6 +129,7 @@ export class DiscordVoiceChannelServerHandler {
 
     this.startToStopTransitionHandler.onTransitionFinished(async () => {
       await this.messageHandler.sendStartingMessage();
+      await this.vmHandler.start();
       if (this.stopToStartTransitionHandler.is(State.STATUS_B)) {
         this.stopToStartTransitionHandler.reset();
       }
@@ -147,6 +148,7 @@ export class DiscordVoiceChannelServerHandler {
 
     this.stopToStartTransitionHandler.onTransitionFinished(async () => {
       await this.messageHandler.sendStopMessage();
+      await this.vmHandler.stop();
       if (this.startToStopTransitionHandler.is(State.STATUS_B)) {
         this.startToStopTransitionHandler.reset();
       }

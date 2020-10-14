@@ -22,6 +22,8 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
     };
     vmHandler = {
       onStarted: jest.fn(),
+      start: jest.fn(),
+      stop: jest.fn()
     };
     messagingHandler = {
       sendStartAbort: jest.fn(),
@@ -81,6 +83,7 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
         handler.onStartFinished(callback);
         handler.onceStartFinished(() => {
           expect(callback).toBeCalledTimes(1);
+          expect(vmHandler.start).toBeCalledTimes(1)
           expect(messagingHandler.sendStartingMessage).toHaveBeenCalledTimes(1);
           done();
         });
@@ -159,8 +162,9 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
         handler.onStopFinished(callback);
         handler.onceStopFinished(() => {
           expect(callback).toBeCalledTimes(1);
+          expect(vmHandler.stop).toBeCalledTimes(1)
           expect(messagingHandler.sendStopMessage).toBeCalledTimes(1);
-          done();
+          done(); 
         });
         handler.start();
       });
