@@ -164,7 +164,7 @@ describe("StartStopServerByDiscordVoiceChannel", () => {
           expect(callback).toBeCalledTimes(1);
           expect(vmHandler.stop).toBeCalledTimes(1)
           expect(messagingHandler.sendStopMessage).toBeCalledTimes(1);
-          done();
+          done(); 
         });
         handler.start();
       });
