@@ -24,9 +24,9 @@
     "typescript": "4.0.3"
   },
   "dependencies": {
-    "@gluecode-it/delayed-transition-handler": "3.1.0",
-    "@gluecode-it/discord-voice-channel-observer": "^3.0.0",
-    "@gluecode-it/google-cloud-vm-handler": "^1.1.6",
+    "@gluecode-it/delayed-transition-handler": "^3.1.1",
+    "@gluecode-it/discord-voice-channel-observer": "^3.1.3",
+    "@gluecode-it/google-cloud-vm-handler": "^1.1.7",
     "@google-cloud/compute": "^2.2.0",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^12.3.1",
@@ -37,5 +37,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
+	"publishConfig": {
+		"access": "public"
+	}
 }
