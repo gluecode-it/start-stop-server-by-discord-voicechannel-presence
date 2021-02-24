@@ -21,7 +21,7 @@
     "husky": "4.3.8",
     "jest": "26.6.3",
     "semantic-release": "17.3.9",
-    "typescript": "4.1.5"
+    "typescript": "4.2.2"
   },
   "dependencies": {
     "@gluecode-it/delayed-transition-handler": "^3.1.1",
